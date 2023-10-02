@@ -1,0 +1,5 @@
+# ini memberatkan, gk usah di push
+node_modules
+
+# credential jgn di push
+.env

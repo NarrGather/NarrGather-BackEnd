@@ -1,0 +1,5293 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Open API C7",
+    "version": "1.0.0"
+  },
+  "tags": [
+    {
+      "name": "Users",
+      "description": "Users API Collection"
+    },
+    {
+      "name": "Airlines",
+      "description": "Airlines API Collection"
+    },
+    {
+      "name": "Airports",
+      "description": "Airports API Collection"
+    },
+    {
+      "name": "Flights",
+      "description": "Flights API Collection"
+    },
+
+    {
+      "name": "Bookings",
+      "description": "Bookings API Collection"
+    },
+    {
+      "name": "Admins",
+      "description": "Admins API Collection"
+    },
+    {
+      "name": "Passengers",
+      "description": "Passengers API Collection"
+    },
+    {
+      "name": "Seats",
+      "description": "Seats API Collection"
+    },
+    {
+      "name": "Payments",
+      "description": "Payments API Collection"
+    }
+  ],
+  "paths": {
+    "/api/v1/user": {
+      "get": {
+        "tags": ["Users"],
+        "responses": {
+          "200": {
+            "description": "Success get all Users",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newUsers": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "name": {
+                              "type": "string",
+                              "example": "Budi"
+                            },
+                            "password": {
+                              "type": "string",
+                              "format": "password",
+                              "example": "$2b$10$pg0ivHyurpBkVjUkO5LDUegnyP42nC3bPdNOk0ECaT0zsdgDiHASa"
+                            },
+                            "image": {
+                              "type": "string",
+                              "example": "https://ik.imagekit.io/test123/IMG-1685202069643_V3uz9HkYJ.png"
+                            },
+                            "email": {
+                              "type": "string",
+                              "format": "email",
+                              "example": "Budi123@mail.com"
+                            },
+                            "otp": {
+                              "type": "integer",
+                              "example": 123456
+                            },
+                            "verified": {
+                              "type": "boolean",
+                              "example": true
+                            },
+                            "phoneNumber": {
+                              "type": "string",
+                              "example": "081234567890"
+                            },
+                            "updatedAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "createdAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/user/user-info": {
+      "get": {
+        "tags": ["Users"],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get User by Token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newUsers": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "name": {
+                              "type": "string",
+                              "example": "Budi"
+                            },
+                            "password": {
+                              "type": "string",
+                              "format": "password",
+                              "example": "$2b$10$pg0ivHyurpBkVjUkO5LDUegnyP42nC3bPdNOk0ECaT0zsdgDiHASa"
+                            },
+                            "image": {
+                              "type": "string",
+                              "example": "https://ik.imagekit.io/test123/IMG-1685202069643_V3uz9HkYJ.png"
+                            },
+                            "email": {
+                              "type": "string",
+                              "format": "email",
+                              "example": "Budi123@mail.com"
+                            },
+                            "otp": {
+                              "type": "integer",
+                              "example": 123456
+                            },
+                            "verified": {
+                              "type": "boolean",
+                              "example": true
+                            },
+                            "phoneNumber": {
+                              "type": "string",
+                              "example": "081234567890"
+                            },
+                            "updatedAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "createdAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "bookings": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "amount": {
+                                    "type": "integer",
+                                    "example": 250000
+                                  },
+                                  "flight_id": {
+                                    "type": "integer",
+                                    "example": 1
+                                  },
+                                  "order_date": {
+                                    "type": "string",
+                                    "example": "1945-08-17T00:00:00.000Z"
+                                  },
+                                  "user_id": {
+                                    "type": "integer",
+                                    "example": 1
+                                  },
+                                  "flight": {
+                                    "type": "object",
+                                    "properties": {
+                                      "airline_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                      },
+                                      "departure": {
+                                        "type": "integer",
+                                        "example": 1
+                                      },
+                                      "arrival": {
+                                        "type": "integer",
+                                        "example": 1
+                                      },
+                                      "firstClass_price": {
+                                        "type": "integer",
+                                        "example": 550000
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/user/register": {
+      "post": {
+        "tags": ["Users"],
+        "requestBody": {
+          "description": "Success registered new user",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Budi"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "example": "budi123@mail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "format": "password",
+                    "example": "passwordBudi"
+                  },
+                  "phoneNumber": {
+                    "type": "string",
+                    "example": "081234567890"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success created new User",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newUser": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "example": "Budi"
+                            },
+                            "email": {
+                              "type": "string",
+                              "format": "email",
+                              "example": "Budi123@mail.com"
+                            },
+                            "password": {
+                              "type": "string",
+                              "format": "password",
+                              "example": "$2b$10$pg0ivHyurpBkVjUkO5LDUegnyP42nC3bPdNOk0ECaT0zsdgDiHASa"
+                            },
+                            "phoneNumber": {
+                              "type": "string",
+                              "example": "081234567890"
+                            },
+                            "updatedAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "createdAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "image": {
+                              "type": "string",
+                              "example": null
+                            },
+                            "verified": {
+                              "type": "boolean",
+                              "example": null
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Minimum password not enough",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "minimum password length must be 8 charater or more"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400 ": {
+            "description": "user already exist",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "email already exist!"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/user/login": {
+      "post": {
+        "tags": ["Users"],
+        "requestBody": {
+          "description": "This is User Login API",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "email",
+                    "example": "budi123@mail.com"
+                  },
+                  "password": {
+                    "type": "password",
+                    "example": "passwordBudi"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success Login",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "username": {
+                          "type": "string",
+                          "example": "Budi"
+                        },
+                        "email": {
+                          "type": "email",
+                          "example": "budi123@mail.com"
+                        },
+                        "token": {
+                          "type": "string",
+                          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTksIndhcmVob3VzZUlkIjoxMiwiaWF0IjoxNjY2MDIyNTc0fQ.HpBlFpKLYexC8uw5Qps6yfNcX_m8OinmqUO4NLPQgHs"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Wrong Password",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Wrong Password"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/user/verify": {
+      "post": {
+        "tags": ["Users"],
+        "requestBody": {
+          "description": "This is User verify API",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "email",
+                    "example": "budi123@mail.com"
+                  },
+                  "otp": {
+                    "type": "integer",
+                    "example": "123456"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OTP verification successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "OTP verification successful"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid OTP",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Invalid OTP"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/user/generate-password": {
+      "post": {
+        "tags": ["Users"],
+        "requestBody": {
+          "description": "This is generate password API",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "email",
+                    "example": "budi123@mail.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Reset password link has been sent to your email",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Reset password link has been sent to your email"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Failed Reset password link because user not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "User not found"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/user/update": {
+      "put": {
+        "tags": ["Users"],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "requestBody": {
+          "description": "Success edit User",
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Budi"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "example": "budi123@mail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "format": "password",
+                    "example": "passwordBudi"
+                  },
+                  "phoneNumber": {
+                    "type": "string",
+                    "example": "081234567890"
+                  },
+                  "image": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success edit User",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newUsers": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "name": {
+                              "type": "string",
+                              "example": "Budi"
+                            },
+                            "password": {
+                              "type": "string",
+                              "format": "password",
+                              "example": "$2b$10$pg0ivHyurpBkVjUkO5LDUegnyP42nC3bPdNOk0ECaT0zsdgDiHASa"
+                            },
+                            "image": {
+                              "type": "string",
+                              "example": "https://ik.imagekit.io/test123/IMG-1685202069643_V3uz9HkYJ.png"
+                            },
+                            "email": {
+                              "type": "string",
+                              "format": "email",
+                              "example": "Budi123@mail.com"
+                            },
+                            "otp": {
+                              "type": "integer",
+                              "example": 123456
+                            },
+                            "verified": {
+                              "type": "boolean",
+                              "example": true
+                            },
+                            "phoneNumber": {
+                              "type": "string",
+                              "example": "081234567890"
+                            },
+                            "updatedAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "createdAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "authorization failed because invalid token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Invalid Token"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Failed edit User because user not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "User not found"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/user/reset-password": {
+      "put": {
+        "tags": ["Users"],
+        "requestBody": {
+          "description": "Success Reset Password User",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "example": "budi123@mail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "format": "password",
+                    "example": "passwordBudi"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Password has been reset",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Password has been reset"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Failed Reset Password User because user not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "User doesn't exist"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/user/{id}": {
+      "delete": {
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "User ID to delete",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success delete User by ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "User dengan id 1 terhapus"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Failed delete User because User ID not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "User dengan id 1 terhapus"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/airline": {
+      "get": {
+        "tags": ["Airlines"],
+        "responses": {
+          "200": {
+            "description": "Success get all Airlines",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newAirlines": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "airline_name": {
+                              "type": "string",
+                              "example": "Emirates"
+                            },
+                            "baggage": {
+                              "type": "integer",
+                              "example": 20
+                            },
+                            "cabin_baggage": {
+                              "type": "integer",
+                              "example": 7
+                            },
+                            "updatedAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "createdAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Airlines"],
+        "requestBody": {
+          "description": "Success created new Airline",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "airline_name": {
+                    "type": "string",
+                    "example": "Emirates"
+                  },
+                  "baggage": {
+                    "type": "integer",
+                    "example": 20
+                  },
+                  "cabin_baggage": {
+                    "type": "integer",
+                    "example": 7
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success created new Airline",
+            "content": {
+              "application/json:": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newAirlines": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "airline_name": {
+                              "type": "string",
+                              "example": "Emirates"
+                            },
+                            "baggage": {
+                              "type": "integer",
+                              "example": 20
+                            },
+                            "cabin_baggage": {
+                              "type": "integer",
+                              "example": 7
+                            },
+                            "updatedAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "createdAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "authorization failed because invalid token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Invalid Token"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/airline/search": {
+      "get": {
+        "tags": ["Airlines"],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "name of Airline to return",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get search Airline by name",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newAirlines": {
+                          "type": "object",
+                          "properties": {
+                            "airline_name": {
+                              "type": "string",
+                              "example": "Emirates"
+                            },
+                            "baggage": {
+                              "type": "integer",
+                              "example": 20
+                            },
+                            "cabin_baggage": {
+                              "type": "integer",
+                              "example": 7
+                            },
+                            "updatedAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "createdAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/airline/{id}": {
+      "get": {
+        "tags": ["Airlines"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of Airline to return",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get Airline by ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newAirlines": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "airline_name": {
+                              "type": "string",
+                              "example": "Emirates"
+                            },
+                            "baggage": {
+                              "type": "integer",
+                              "example": 20
+                            },
+                            "cabin_baggage": {
+                              "type": "integer",
+                              "example": 7
+                            },
+                            "updatedAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "createdAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Airlines"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of Airline to return",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Success edit Airline by ID",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "airline_name": {
+                    "type": "string",
+                    "example": "Emirates"
+                  },
+                  "baggage": {
+                    "type": "integer",
+                    "example": 20
+                  },
+                  "cabin_baggage": {
+                    "type": "integer",
+                    "example": 7
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success edit Airline by ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newAirlines": {
+                          "type": "object",
+                          "properties": {
+                            "airline_name": {
+                              "type": "string",
+                              "example": "Emirates"
+                            },
+                            "baggage": {
+                              "type": "integer",
+                              "example": 20
+                            },
+                            "cabin_baggage": {
+                              "type": "integer",
+                              "example": 7
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "authorization failed because invalid token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Invalid Token"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Airlines"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Airline ID to delete",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success delete Airline by ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Airline dengan id 1 terhapus"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Failed delete Airline because Airline ID not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Airline with this id 1 is not found"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/airports": {
+      "get": {
+        "tags": ["Airports"],
+        "responses": {
+          "200": {
+            "description": "Success get all Airports",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newAirports": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "airport_name": {
+                              "type": "string",
+                              "example": "Soekarno-Hatta International Airport"
+                            },
+                            "city": {
+                              "type": "string",
+                              "example": "Jakarta"
+                            },
+                            "country": {
+                              "type": "string",
+                              "example": "Indonesia"
+                            },
+                            "imgURL": {
+                              "type": "string",
+                              "example": "https://ik.imagekit.io/test123/IMG-1685202069643_V3uz9HkYJ.png"
+                            },
+                            "updatedAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "createdAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Airports"],
+        "requestBody": {
+          "description": "Success created new Airport",
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "airport_name": {
+                    "type": "string",
+                    "example": "Soekarno-Hatta International Airport"
+                  },
+                  "city": {
+                    "type": "string",
+                    "example": "Jakarta"
+                  },
+                  "country": {
+                    "type": "string",
+                    "example": "Indonesia"
+                  },
+                  "image": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success created new Airport",
+            "content": {
+              "multipart/form-data:": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newAirports": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "airport_name": {
+                              "type": "string",
+                              "example": "Soekarno-Hatta International Airport"
+                            },
+                            "city": {
+                              "type": "string",
+                              "example": "Jakarta"
+                            },
+                            "country": {
+                              "type": "string",
+                              "example": "Indonesia"
+                            },
+                            "imgURL": {
+                              "type": "string",
+                              "example": "https://ik.imagekit.io/test123/IMG-1685202069643_V3uz9HkYJ.png"
+                            },
+                            "updatedAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "createdAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "authorization failed because invalid token",
+            "content": {
+              "multipart/form-data": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Invalid Token"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/airports/{id}": {
+      "get": {
+        "tags": ["Airports"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of Airport to return",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get Airport by ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newAirports": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "airport_name": {
+                              "type": "string",
+                              "example": "Soekarno-Hatta International Airport"
+                            },
+                            "city": {
+                              "type": "string",
+                              "example": "Jakarta"
+                            },
+                            "country": {
+                              "type": "string",
+                              "example": "Indonesia"
+                            },
+                            "imgURL": {
+                              "type": "string",
+                              "example": "https://ik.imagekit.io/test123/IMG-1685202069643_V3uz9HkYJ.png"
+                            },
+                            "updatedAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "createdAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Airports"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of Airport to return",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Success edit Airport by ID",
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "airport_name": {
+                    "type": "string",
+                    "example": "Soekarno-Hatta International Airport"
+                  },
+                  "city": {
+                    "type": "string",
+                    "example": "Jakarta"
+                  },
+                  "country": {
+                    "type": "string",
+                    "example": "Indonesia"
+                  },
+                  "image": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success edit Airport by ID",
+            "content": {
+              "multipart/form-data": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newAirports": {
+                          "type": "object",
+                          "properties": {
+                            "airport_name": {
+                              "type": "string",
+                              "example": "Soekarno-Hatta International Airport"
+                            },
+                            "city": {
+                              "type": "string",
+                              "example": "Jakarta"
+                            },
+                            "country": {
+                              "type": "string",
+                              "example": "Indonesia"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "authorization failed because invalid token",
+            "content": {
+              "multipart/form-data": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Invalid Token"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Airports"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Airport ID to delete",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success delete Airport by ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Airport dengan id 1 terhapus"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Failed delete Airport because Airport ID not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Airport with this id 1 is not found"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/flight": {
+      "get": {
+        "tags": ["Flights"],
+        "responses": {
+          "200": {
+            "description": "Success get all Flights",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newFlights": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "airline_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "flight_code": {
+                              "type": "integer",
+                              "example": 112
+                            },
+                            "departure": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "arrival": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "seat_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "admin_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "economyClass_price": {
+                              "type": "integer",
+                              "example": 250000
+                            },
+                            "premiumEconomy_price": {
+                              "type": "integer",
+                              "example": 350000
+                            },
+                            "business_price": {
+                              "type": "integer",
+                              "example": 450000
+                            },
+                            "firstClass_price": {
+                              "type": "integer",
+                              "example": 550000
+                            },
+                            "departure_time": {
+                              "type": "date",
+                              "example": "1945-08-17T00:00:00.000Z"
+                            },
+                            "arrival_time": {
+                              "type": "date",
+                              "example": "1945-08-17T00:00:00.000Z"
+                            },
+                            "updatedAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "createdAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "airline": {
+                              "type": "object",
+                              "properties": {
+                                "airline_name": {
+                                  "type": "string",
+                                  "example": "Emirates"
+                                }
+                              }
+                            },
+                            "departureAirport": {
+                              "type": "object",
+                              "properties": {
+                                "airport_name": {
+                                  "type": "string",
+                                  "example": "Soekarno-Hatta International Airport"
+                                },
+                                "city": {
+                                  "type": "string",
+                                  "example": "Jakarta"
+                                },
+                                "country": {
+                                  "type": "string",
+                                  "example": "Indonesia"
+                                },
+                                "imgURL": {
+                                  "type": "string",
+                                  "example": "https://ik.imagekit.io/test123/IMG-1686821195784_SpKO5Y1Ml.png"
+                                }
+                              }
+                            },
+                            "arrivalAirport": {
+                              "type": "object",
+                              "properties": {
+                                "airport_name": {
+                                  "type": "string",
+                                  "example": "Soekarno-Hatta International Airport"
+                                },
+                                "city": {
+                                  "type": "string",
+                                  "example": "Jakarta"
+                                },
+                                "country": {
+                                  "type": "string",
+                                  "example": "Indonesia"
+                                },
+                                "imgURL": {
+                                  "type": "string",
+                                  "example": "https://ik.imagekit.io/test123/IMG-1686821195784_SpKO5Y1Ml.png"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Flights"],
+        "requestBody": {
+          "description": "Success created new Flight",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "airline_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "admin_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "flight_code": {
+                    "type": "integer",
+                    "example": 112
+                  },
+                  "departure": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "arrival": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "seat_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "economyClass_price": {
+                    "type": "integer",
+                    "example": 250000
+                  },
+                  "premiumEconomy_price": {
+                    "type": "integer",
+                    "example": 350000
+                  },
+                  "business_price": {
+                    "type": "integer",
+                    "example": 450000
+                  },
+                  "firstClass_price": {
+                    "type": "integer",
+                    "example": 550000
+                  },
+                  "departure_time": {
+                    "type": "date",
+                    "example": "1945-08-17"
+                  },
+                  "arrival_time": {
+                    "type": "date",
+                    "example": "1945-08-17"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success created new Flight",
+            "content": {
+              "application/json:": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newFlights": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "airline_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "admin_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "flight_code": {
+                              "type": "integer",
+                              "example": 112
+                            },
+                            "departure": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "arrival": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "seat_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "economyClass_price": {
+                              "type": "integer",
+                              "example": 250000
+                            },
+                            "premiumEconomy_price": {
+                              "type": "integer",
+                              "example": 350000
+                            },
+                            "business_price": {
+                              "type": "integer",
+                              "example": 450000
+                            },
+                            "firstClass_price": {
+                              "type": "integer",
+                              "example": 550000
+                            },
+                            "departure_time": {
+                              "type": "date",
+                              "example": "1945-08-17T00:00:00.000Z"
+                            },
+                            "arrival_time": {
+                              "type": "date",
+                              "example": "1945-08-17T00:00:00.000Z"
+                            },
+                            "updatedAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "createdAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "authorization failed because invalid token",
+            "content": {
+              "multipart/form-data": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Invalid Token"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/flight/{id}": {
+      "get": {
+        "tags": ["Flights"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of Flight to return",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get Flight by ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newFlights": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "airline_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "admin_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "flight_code": {
+                              "type": "integer",
+                              "example": 112
+                            },
+                            "departure": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "arrival": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "seat_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "economyClass_price": {
+                              "type": "integer",
+                              "example": 250000
+                            },
+                            "premiumEconomy_price": {
+                              "type": "integer",
+                              "example": 350000
+                            },
+                            "business_price": {
+                              "type": "integer",
+                              "example": 450000
+                            },
+                            "firstClass_price": {
+                              "type": "integer",
+                              "example": 550000
+                            },
+                            "departure_time": {
+                              "type": "date",
+                              "example": "1945-08-17T00:00:00.000Z"
+                            },
+                            "arrival_time": {
+                              "type": "date",
+                              "example": "1945-08-17T00:00:00.000Z"
+                            },
+                            "updatedAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "createdAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "airline": {
+                              "type": "string",
+                              "example": null
+                            },
+                            "departureAirport": {
+                              "type": "object",
+                              "properties": {
+                                "airport_name": {
+                                  "type": "string",
+                                  "example": "Soekarno-Hatta International Airport"
+                                },
+                                "city": {
+                                  "type": "string",
+                                  "example": "Jakarta"
+                                },
+                                "country": {
+                                  "type": "string",
+                                  "example": "Indonesia"
+                                },
+                                "imgURL": {
+                                  "type": "string",
+                                  "example": "https://ik.imagekit.io/test123/IMG-1686821195784_SpKO5Y1Ml.png"
+                                }
+                              }
+                            },
+                            "arrivalAirport": {
+                              "type": "string",
+                              "properties": {
+                                "airport_name": {
+                                  "type": "string",
+                                  "example": "Soekarno-Hatta International Airport"
+                                },
+                                "city": {
+                                  "type": "string",
+                                  "example": "Jakarta"
+                                },
+                                "country": {
+                                  "type": "string",
+                                  "example": "Indonesia"
+                                },
+                                "imgURL": {
+                                  "type": "string",
+                                  "example": "https://ik.imagekit.io/test123/IMG-1686821195784_SpKO5Y1Ml.png"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Flights"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of Flightto return",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Success edit Flight by ID",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "airline_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "admin_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "flight_code": {
+                    "type": "integer",
+                    "example": 112
+                  },
+                  "departure": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "arrival": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "seat_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "economyClass_price": {
+                    "type": "integer",
+                    "example": 250000
+                  },
+                  "premiumEconomy_price": {
+                    "type": "integer",
+                    "example": 350000
+                  },
+                  "business_price": {
+                    "type": "integer",
+                    "example": 450000
+                  },
+                  "firstClass_price": {
+                    "type": "integer",
+                    "example": 550000
+                  },
+                  "departure_time": {
+                    "type": "date",
+                    "example": "1945-08-17"
+                  },
+                  "arrival_time": {
+                    "type": "date",
+                    "example": "1945-08-17"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success edit Flight by ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newFlights": {
+                          "type": "object",
+                          "properties": {
+                            "airline_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "admin_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "flight_code": {
+                              "type": "integer",
+                              "example": 112
+                            },
+                            "departure": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "arrival": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "seat_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "economyClass_price": {
+                              "type": "integer",
+                              "example": 250000
+                            },
+                            "premiumEconomy_price": {
+                              "type": "integer",
+                              "example": 350000
+                            },
+                            "business_price": {
+                              "type": "integer",
+                              "example": 450000
+                            },
+                            "firstClass_price": {
+                              "type": "integer",
+                              "example": 550000
+                            },
+                            "departure_time": {
+                              "type": "date",
+                              "example": "1945-08-17T00:00:00.000Z"
+                            },
+                            "arrival_time": {
+                              "type": "date",
+                              "example": "1945-08-17T00:00:00.000Z"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "authorization failed because invalid token",
+            "content": {
+              "multipart/form-data": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Invalid Token"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Flights"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Flight ID to delete",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success delete Flight by ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "flights with id 1 was successfully deleted"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Failed delete Flight because Flight ID not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "flights with this id 1 is not found"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/flight/search/{depart}/{arrive}": {
+      "get": {
+        "tags": ["Flights"],
+        "parameters": [
+          {
+            "name": "depart",
+            "in": "path",
+            "description": "depart of Flight to return",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "arrive",
+            "in": "path",
+            "description": "arrive of Flight to return",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get Flight by depart & arrive",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newFlights": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "airline_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "flight_code": {
+                              "type": "integer",
+                              "example": 112
+                            },
+                            "departure": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "arrival": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "seat_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "admin_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "economyClass_price": {
+                              "type": "integer",
+                              "example": 250000
+                            },
+                            "premiumEconomy_price": {
+                              "type": "integer",
+                              "example": 350000
+                            },
+                            "business_price": {
+                              "type": "integer",
+                              "example": 450000
+                            },
+                            "firstClass_price": {
+                              "type": "integer",
+                              "example": 550000
+                            },
+                            "departure_time": {
+                              "type": "date",
+                              "example": "1945-08-17T00:00:00.000Z"
+                            },
+                            "arrival_time": {
+                              "type": "date",
+                              "example": "1945-08-17T00:00:00.000Z"
+                            },
+                            "updatedAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "createdAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "departureAirport": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "integer",
+                                  "example": 1
+                                },
+                                "airport_name": {
+                                  "type": "string",
+                                  "example": "Soekarno-Hatta International Airport"
+                                },
+                                "city": {
+                                  "type": "string",
+                                  "example": "Jakarta"
+                                },
+                                "country": {
+                                  "type": "string",
+                                  "example": "Indonesia"
+                                },
+                                "imgURL": {
+                                  "type": "string",
+                                  "example": "https://ik.imagekit.io/test123/IMG-1686821195784_SpKO5Y1Ml.png"
+                                },
+                                "updatedAt": {
+                                  "type": "date",
+                                  "example": "2022-10-17T14:04:48.389Z"
+                                },
+                                "createdAt": {
+                                  "type": "date",
+                                  "example": "2022-10-17T14:04:48.389Z"
+                                }
+                              }
+                            },
+                            "arrivalAirport": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "integer",
+                                  "example": 1
+                                },
+                                "airport_name": {
+                                  "type": "string",
+                                  "example": "Soekarno-Hatta International Airport"
+                                },
+                                "city": {
+                                  "type": "string",
+                                  "example": "Jakarta"
+                                },
+                                "country": {
+                                  "type": "string",
+                                  "example": "Indonesia"
+                                },
+                                "imgURL": {
+                                  "type": "string",
+                                  "example": "https://ik.imagekit.io/test123/IMG-1686821195784_SpKO5Y1Ml.png"
+                                },
+                                "updatedAt": {
+                                  "type": "date",
+                                  "example": "2022-10-17T14:04:48.389Z"
+                                },
+                                "createdAt": {
+                                  "type": "date",
+                                  "example": "2022-10-17T14:04:48.389Z"
+                                }
+                              }
+                            },
+                            "airline": {
+                              "type": "object",
+                              "properties": {
+                                "airline_name": {
+                                  "type": "string",
+                                  "example": "Emirates"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/bookings": {
+      "get": {
+        "tags": ["Bookings"],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get all Bookings",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newBookings": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "user_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "flight_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "order_date": {
+                              "type": "date",
+                              "example": "1945-08-17T00:00:00.000Z"
+                            },
+                            "amount": {
+                              "type": "integer",
+                              "example": 250000
+                            },
+                            "updatedAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "createdAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Bookings"],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "requestBody": {
+          "description": "Success created new Booking",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "flight_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "order_date": {
+                    "type": "date",
+                    "example": "1945-08-17"
+                  },
+                  "amount": {
+                    "type": "integer",
+                    "example": 250000
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success created new Booking",
+            "content": {
+              "application/json:": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newBookings": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "user_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "flight_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "order_date": {
+                              "type": "date",
+                              "example": "1945-08-17T00:00:00.000Z"
+                            },
+                            "amount": {
+                              "type": "integer",
+                              "example": 250000
+                            },
+                            "updatedAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "createdAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "authorization failed because invalid token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Invalid Token"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/bookings/{id}": {
+      "get": {
+        "tags": ["Bookings"],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of Booking to return",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get Booking by ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newAirports": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "user_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "flight_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "order_date": {
+                              "type": "date",
+                              "example": "1945-08-17T00:00:00.000Z"
+                            },
+                            "amount": {
+                              "type": "integer",
+                              "example": 250000
+                            },
+                            "updatedAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "createdAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "passengers": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "integer",
+                                    "example": 1
+                                  },
+                                  "name": {
+                                    "type": "string",
+                                    "example": "Budi"
+                                  },
+                                  "born_date": {
+                                    "type": "date",
+                                    "example": "1945-08-17T00:00:00.000Z"
+                                  },
+                                  "citizen": {
+                                    "type": "string",
+                                    "example": "Indonesia"
+                                  },
+                                  "identity_number": {
+                                    "type": "integer",
+                                    "example": 117
+                                  },
+                                  "publisher_country": {
+                                    "type": "string",
+                                    "example": "Indonesia"
+                                  },
+                                  "valid_until": {
+                                    "type": "date",
+                                    "example": "1945-08-17T00:00:00.000Z"
+                                  },
+                                  "booking_id": {
+                                    "type": "integer",
+                                    "example": 1
+                                  }
+                                }
+                              },
+                              "example": [null, null]
+                            },
+                            "payment": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "integer",
+                                    "example": 1
+                                  },
+                                  "payment_method": {
+                                    "type": "string",
+                                    "example": "Credit Card"
+                                  },
+                                  "payment_amount": {
+                                    "type": "integer",
+                                    "example": 250000
+                                  },
+                                  "payment_date": {
+                                    "type": "date",
+                                    "example": "1945-08-17T00:00:00.000Z"
+                                  }
+                                }
+                              },
+                              "example": [null, null]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Bookings"],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of Booking to return",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Success edit Booking by ID",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "flight_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "order_date": {
+                    "type": "date",
+                    "example": "2022-10-17"
+                  },
+                  "amount": {
+                    "type": "integer",
+                    "example": 250000
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success edit Booking by ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newAirports": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "user_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "flight_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "order_date": {
+                              "type": "date",
+                              "example": "1945-08-17T00:00:00.000Z"
+                            },
+                            "amount": {
+                              "type": "integer",
+                              "example": 250000
+                            },
+                            "updatedAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "createdAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "authorization failed because invalid token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Invalid Token"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Bookings"],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Booking ID to delete",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success delete Booking by ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Booking dengan id 1 terhapus"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Failed delete Booking because Booking ID not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Booking with this id 1 is not found"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin": {
+      "get": {
+        "tags": ["Admins"],
+        "responses": {
+          "200": {
+            "description": "Success get all Admins",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newAdmins": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "name": {
+                              "type": "string",
+                              "example": "Admin"
+                            },
+                            "email": {
+                              "type": "string",
+                              "format": "email",
+                              "example": "admin123@mail.com"
+                            },
+                            "password": {
+                              "type": "string",
+                              "format": "password",
+                              "example": "$2b$10$pg0ivHyurpBkVjUkO5LDUegnyP42nC3bPdNOk0ECaT0zsdgDiHASa"
+                            },
+                            "updatedAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "createdAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/register": {
+      "post": {
+        "tags": ["Admins"],
+        "requestBody": {
+          "description": "Success registered new Admin",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Admin"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "example": "admin123@mail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "format": "password",
+                    "example": "passwordAdmin"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success created new Admin",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newAdmin": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "name": {
+                              "type": "string",
+                              "example": "Admin"
+                            },
+                            "email": {
+                              "type": "string",
+                              "format": "email",
+                              "example": "admin123@mail.com"
+                            },
+                            "password": {
+                              "type": "string",
+                              "format": "password",
+                              "example": "$2b$10$pg0ivHyurpBkVjUkO5LDUegnyP42nC3bPdNOk0ECaT0zsdgDiHASa"
+                            },
+                            "updatedAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "createdAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Minimum password not enough",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "minimum password length must be 8 charater or more"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400 ": {
+            "description": "Admin already exist",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "email already exist!"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/login": {
+      "post": {
+        "tags": ["Admins"],
+        "requestBody": {
+          "description": "This is Admin Login API",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "email",
+                    "example": "admin123@mail.com"
+                  },
+                  "password": {
+                    "type": "password",
+                    "example": "passwordAdmin"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success Login",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "username": {
+                          "type": "string",
+                          "example": "Admin"
+                        },
+                        "email": {
+                          "type": "email",
+                          "example": "admin123@mail.com"
+                        },
+                        "token": {
+                          "type": "string",
+                          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTksIndhcmVob3VzZUlkIjoxMiwiaWF0IjoxNjY2MDIyNTc0fQ.HpBlFpKLYexC8uw5Qps6yfNcX_m8OinmqUO4NLPQgHs"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Wrong Password",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Wrong Password"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/{id}": {
+      "get": {
+        "tags": ["Admins"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of Admin to return",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get Admin by ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newAdmins": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "name": {
+                              "type": "string",
+                              "example": "Admin"
+                            },
+                            "email": {
+                              "type": "string",
+                              "format": "email",
+                              "example": "admin123@mail.com"
+                            },
+                            "password": {
+                              "type": "string",
+                              "format": "password",
+                              "example": "$2b$10$pg0ivHyurpBkVjUkO5LDUegnyP42nC3bPdNOk0ECaT0zsdgDiHASa"
+                            },
+                            "updatedAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "createdAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Admins"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of Admin to return",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Success edit Admin by ID",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Admin"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "example": "admin123@mail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "format": "password",
+                    "example": "passwordAdmin"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success edit Admin by ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newAdmins": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "name": {
+                              "type": "string",
+                              "example": "Admin"
+                            },
+                            "email": {
+                              "type": "string",
+                              "format": "email",
+                              "example": "admin123@mail.com"
+                            },
+                            "password": {
+                              "type": "string",
+                              "format": "password",
+                              "example": "$2b$10$pg0ivHyurpBkVjUkO5LDUegnyP42nC3bPdNOk0ECaT0zsdgDiHASa"
+                            },
+                            "updatedAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "createdAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Admins"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Admin ID to delete",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success delete Admin by ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Admin dengan id 1 terhapus"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Failed delete Admin because Admin ID not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Seat with this id 1 is not found"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/passengers": {
+      "get": {
+        "tags": ["Passengers"],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get all Passengers",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newPassengers": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "name": {
+                              "type": "string",
+                              "example": "Budi"
+                            },
+                            "born_date": {
+                              "type": "date",
+                              "example": "1945-08-17T00:00:00.000Z"
+                            },
+                            "citizen": {
+                              "type": "string",
+                              "example": "Indonesia"
+                            },
+                            "identity_number": {
+                              "type": "string",
+                              "example": "0123456789"
+                            },
+                            "publisher_country": {
+                              "type": "string",
+                              "example": "Indonesia"
+                            },
+                            "valid_until": {
+                              "type": "date",
+                              "example": "1945-08-17T00:00:00.000Z"
+                            },
+                            "booking_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "updatedAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "createdAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Passengers"],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "requestBody": {
+          "description": "Success created new Passenger",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Budi"
+                  },
+                  "born_date": {
+                    "type": "date",
+                    "example": "1945-08-17"
+                  },
+                  "citizen": {
+                    "type": "string",
+                    "example": "Indonesia"
+                  },
+                  "identity_number": {
+                    "type": "string",
+                    "example": "0123456789"
+                  },
+                  "publisher_country": {
+                    "type": "string",
+                    "example": "Indonesia"
+                  },
+                  "valid_until": {
+                    "type": "date",
+                    "example": "1945-08-17"
+                  },
+                  "booking_id": {
+                    "type": "integer",
+                    "example": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success created new Passenger",
+            "content": {
+              "application/json:": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newPassengers": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "name": {
+                              "type": "string",
+                              "example": "Budi"
+                            },
+                            "born_date": {
+                              "type": "date",
+                              "example": "1945-08-17T00:00:00.000Z"
+                            },
+                            "citizen": {
+                              "type": "string",
+                              "example": "Indonesia"
+                            },
+                            "identity_number": {
+                              "type": "string",
+                              "example": "0123456789"
+                            },
+                            "publisher_country": {
+                              "type": "string",
+                              "example": "Indonesia"
+                            },
+                            "valid_until": {
+                              "type": "date",
+                              "example": "1945-08-17T00:00:00.000Z"
+                            },
+                            "booking_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "updatedAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "createdAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "authorization failed because invalid token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Invalid Token"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/passengers/{id}": {
+      "get": {
+        "tags": ["Passengers"],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of Passenger to return",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get Passenger by ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newPassengers": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "name": {
+                              "type": "string",
+                              "example": "Budi"
+                            },
+                            "born_date": {
+                              "type": "date",
+                              "example": "1945-08-17T00:00:00.000Z"
+                            },
+                            "citizen": {
+                              "type": "string",
+                              "example": "Indonesia"
+                            },
+                            "identity_number": {
+                              "type": "string",
+                              "example": "0123456789"
+                            },
+                            "publisher_country": {
+                              "type": "string",
+                              "example": "Indonesia"
+                            },
+                            "valid_until": {
+                              "type": "date",
+                              "example": "1945-08-17T00:00:00.000Z"
+                            },
+                            "booking_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "updatedAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "createdAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Passengers"],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of Passenger to return",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Success edit Passenger by ID",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Budi"
+                  },
+                  "born_date": {
+                    "type": "date",
+                    "example": "1945-08-17"
+                  },
+                  "citizen": {
+                    "type": "string",
+                    "example": "Indonesia"
+                  },
+                  "identity_number": {
+                    "type": "string",
+                    "example": "0123456789"
+                  },
+                  "publisher_country": {
+                    "type": "string",
+                    "example": "Indonesia"
+                  },
+                  "valid_until": {
+                    "type": "date",
+                    "example": "1945-08-17"
+                  },
+                  "booking_id": {
+                    "type": "integer",
+                    "example": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success edit Passenger by ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newPassengers": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "name": {
+                              "type": "string",
+                              "example": "Budi"
+                            },
+                            "born_date": {
+                              "type": "date",
+                              "example": "1945-08-17T00:00:00.000Z"
+                            },
+                            "citizen": {
+                              "type": "string",
+                              "example": "Indonesia"
+                            },
+                            "identity_number": {
+                              "type": "string",
+                              "example": "0123456789"
+                            },
+                            "publisher_country": {
+                              "type": "string",
+                              "example": "Indonesia"
+                            },
+                            "valid_until": {
+                              "type": "date",
+                              "example": "1945-08-17T00:00:00.000Z"
+                            },
+                            "booking_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "updatedAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "createdAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "authorization failed because invalid token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Invalid Token"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Passengers"],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Passenger ID to delete",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success delete Passenger by ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Passenger dengan id 1 terhapus"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Failed delete Passenger because Passenger ID not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Passengersith this id 1 is not found"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/seats": {
+      "get": {
+        "tags": ["Seats"],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get all Seats",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newSeats": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "seat_number": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "flight_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "booking_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "updatedAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "createdAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Seats"],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "requestBody": {
+          "description": "Success created new Seat",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "seat_number": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "flight_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "booking_id": {
+                    "type": "integer",
+                    "example": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success created new Seat",
+            "content": {
+              "application/json:": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newSeats": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "seat_number": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "flight_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "booking_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "updatedAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "createdAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "authorization failed because invalid token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Invalid Token"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/seats/{id}": {
+      "get": {
+        "tags": ["Seats"],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of Seat to return",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get Seat by ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newSeats": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "seat_number": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "flight_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "booking_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "updatedAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "createdAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Seats"],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of Seat to return",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Success edit Seat by ID",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "seat_number": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "flight_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "booking_id": {
+                    "type": "integer",
+                    "example": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success edit Seat by ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newSeats": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "seat_number": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "flight_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "booking_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "updatedAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "createdAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "authorization failed because invalid token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Invalid Token"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Seats"],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Seat ID to delete",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success delete Seat by ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Seat dengan id 1 terhapus"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Failed delete Seat because Seat ID not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Seat with this id 1 is not found"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/payments": {
+      "get": {
+        "tags": ["Payments"],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get all Payments",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newPayments": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "booking_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "payment_method": {
+                              "type": "string",
+                              "example": "Credit Card"
+                            },
+                            "payment_amount": {
+                              "type": "integer",
+                              "example": 250000
+                            },
+                            "payment_date": {
+                              "type": "date",
+                              "example": "1945-08-17T00:00:00.000Z"
+                            },
+                            "updatedAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "createdAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Payments"],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "requestBody": {
+          "description": "Success created new Payment",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "booking_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "payment_method": {
+                    "type": "string",
+                    "example": "Credit Card"
+                  },
+                  "payment_amount": {
+                    "type": "integer",
+                    "example": 250000
+                  },
+                  "payment_date": {
+                    "type": "date",
+                    "example": "1945-08-17"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success created new Payment",
+            "content": {
+              "application/json:": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newPayments": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "booking_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "payment_method": {
+                              "type": "string",
+                              "example": "Credit Card"
+                            },
+                            "payment_amount": {
+                              "type": "integer",
+                              "example": 250000
+                            },
+                            "payment_date": {
+                              "type": "date",
+                              "example": "1945-08-17T00:00:00.000Z"
+                            },
+                            "updatedAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "createdAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "authorization failed because invalid token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Invalid Token"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/payments/{id}": {
+      "get": {
+        "tags": ["Payments"],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of Payment to return",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get Payment by ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newPayments": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "booking_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "payment_method": {
+                              "type": "string",
+                              "example": "Credit Card"
+                            },
+                            "payment_amount": {
+                              "type": "integer",
+                              "example": 250000
+                            },
+                            "payment_date": {
+                              "type": "date",
+                              "example": "1945-08-17T00:00:00.000Z"
+                            },
+                            "updatedAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "createdAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Payments"],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of Payment to return",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Success edit Payment by ID",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "booking_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "payment_method": {
+                    "type": "string",
+                    "example": "Credit Card"
+                  },
+                  "payment_amount": {
+                    "type": "integer",
+                    "example": 250000
+                  },
+                  "payment_date": {
+                    "type": "date",
+                    "example": "1945-08-17"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success edit paymentby ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "newPayments": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "booking_id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "payment_method": {
+                              "type": "string",
+                              "example": "Credit Card"
+                            },
+                            "payment_amount": {
+                              "type": "integer",
+                              "example": 250000
+                            },
+                            "payment_date": {
+                              "type": "date",
+                              "example": "1945-08-17T00:00:00.000Z"
+                            },
+                            "updatedAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            },
+                            "createdAt": {
+                              "type": "date",
+                              "example": "2022-10-17T14:04:48.389Z"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "authorization failed because invalid token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Invalid Token"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Payments"],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Payment ID to delete",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success delete Payment by ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Payment dengan id 1 telah dihapus"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Failed delete Payment because Payment ID not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Pembayaran dengan id 1 tidak ditemukan"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Budi"
+          },
+          "password": {
+            "type": "string",
+            "format": "password",
+            "example": "$2b$10$pg0ivHyurpBkVjUkO5LDUegnyP42nC3bPdNOk0ECaT0zsdgDiHASa"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "example": "Budi123@mail.com"
+          },
+          "otp": {
+            "type": "integer",
+            "example": 123456
+          },
+          "verified": {
+            "type": "boolean",
+            "example": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "example": "081234567890"
+          },
+          "updatedAt": {
+            "type": "date",
+            "example": "2022-10-17T14:04:48.389Z"
+          },
+          "createdAt": {
+            "type": "date",
+            "example": "2022-10-17T14:04:48.389Z"
+          }
+        }
+      },
+      "Airport": {
+        "type": "object",
+        "properties": {
+          "airport_name": {
+            "type": "string",
+            "example": "Soekarno-Hatta International Airport"
+          },
+          "city": {
+            "type": "string",
+            "example": "Jakarta"
+          },
+          "country": {
+            "type": "string",
+            "example": "Indonesia"
+          },
+          "imgURL": {
+            "type": "string",
+            "example": "https://ik.imagekit.io/test123/IMG-1685202069643_V3uz9HkYJ.png"
+          },
+          "updatedAt": {
+            "type": "date",
+            "example": "2022-10-17T14:04:48.389Z"
+          },
+          "createdAt": {
+            "type": "date",
+            "example": "2022-10-17T14:04:48.389Z"
+          }
+        }
+      },
+      "Flight": {
+        "type": "object",
+        "properties": {
+          "airline_id": {
+            "type": "integer",
+            "example": 1
+          },
+          "admin_id": {
+            "type": "integer",
+            "example": 1
+          },
+          "flight_code": {
+            "type": "integer",
+            "example": 112
+          },
+          "departure": {
+            "type": "integer",
+            "example": 1
+          },
+          "arrival": {
+            "type": "integer",
+            "example": 1
+          },
+          "seat_id": {
+            "type": "integer",
+            "example": 1
+          },
+          "economyClass_price": {
+            "type": "integer",
+            "example": 250000
+          },
+          "premiumEconomy_price": {
+            "type": "integer",
+            "example": 350000
+          },
+          "business_price": {
+            "type": "integer",
+            "example": 450000
+          },
+          "firstClass_price": {
+            "type": "integer",
+            "example": 550000
+          },
+          "departure_time": {
+            "type": "date",
+            "example": "2022-10-17T00:00:00.000Z"
+          },
+          "arrival_time": {
+            "type": "date",
+            "example": "2022-10-17T00:00:00.000Z"
+          },
+          "updatedAt": {
+            "type": "date",
+            "example": "2022-10-17T14:04:48.389Z"
+          },
+          "createdAt": {
+            "type": "date",
+            "example": "2022-10-17T14:04:48.389Z"
+          }
+        }
+      },
+      "Airline": {
+        "type": "object",
+        "properties": {
+          "airline_name": {
+            "type": "string",
+            "example": "Emirates"
+          },
+          "baggage": {
+            "type": "integer",
+            "example": 20
+          },
+          "cabin_baggage": {
+            "type": "integer",
+            "example": 7
+          },
+          "updatedAt": {
+            "type": "date",
+            "example": "2022-10-17T14:04:48.389Z"
+          },
+          "createdAt": {
+            "type": "date",
+            "example": "2022-10-17T14:04:48.389Z"
+          }
+        }
+      },
+      "Booking": {
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "type": "integer",
+            "example": 1
+          },
+          "flight_id": {
+            "type": "integer",
+            "example": 1
+          },
+          "order_date": {
+            "type": "date",
+            "example": "2022-10-17T00:00:00.000Z"
+          },
+          "amount": {
+            "type": "integer",
+            "example": 250000
+          },
+          "updatedAt": {
+            "type": "date",
+            "example": "2022-10-17T14:04:48.389Z"
+          },
+          "createdAt": {
+            "type": "date",
+            "example": "2022-10-17T14:04:48.389Z"
+          }
+        }
+      },
+      "Admin": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Admin"
+          },
+          "email": {
+            "type": "string",
+            "example": "admin123@mail.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "$2b$10$pg0ivHyurpBkVjUkO5LDUegnyP42nC3bPdNOk0ECaT0zsdgDiHASa"
+          },
+          "updatedAt": {
+            "type": "date",
+            "example": "2022-10-17T14:04:48.389Z"
+          },
+          "createdAt": {
+            "type": "date",
+            "example": "2022-10-17T14:04:48.389Z"
+          }
+        }
+      },
+      "Passengers": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Budi"
+          },
+          "born_date": {
+            "type": "date",
+            "example": "1945-08-17T00:00:00.000Z"
+          },
+          "citizen": {
+            "type": "string",
+            "example": "Indonesia"
+          },
+          "identity_number": {
+            "type": "string",
+            "example": "0123456789"
+          },
+          "publisher_country": {
+            "type": "string",
+            "example": "Indonesia"
+          },
+          "valid_until": {
+            "type": "date",
+            "example": "1945-08-17T00:00:00.000Z"
+          },
+          "booking_id": {
+            "type": "integer",
+            "example": 1
+          },
+          "updatedAt": {
+            "type": "date",
+            "example": "2022-10-17T14:04:48.389Z"
+          },
+          "createdAt": {
+            "type": "date",
+            "example": "2022-10-17T14:04:48.389Z"
+          }
+        }
+      },
+      "Seats": {
+        "type": "object",
+        "properties": {
+          "seat_number": {
+            "type": "integer",
+            "example": 1
+          },
+          "flight_id": {
+            "type": "integer",
+            "example": 1
+          },
+          "booking_id": {
+            "type": "integer",
+            "example": 1
+          },
+          "updatedAt": {
+            "type": "date",
+            "example": "2022-10-17T14:04:48.389Z"
+          },
+          "createdAt": {
+            "type": "date",
+            "example": "2022-10-17T14:04:48.389Z"
+          }
+        }
+      },
+      "Payments": {
+        "type": "object",
+        "properties": {
+          "booking_id": {
+            "type": "integer",
+            "example": 1
+          },
+          "payment_method": {
+            "type": "string",
+            "example": "Credit Card"
+          },
+          "payment_amount": {
+            "type": "integer",
+            "example": 250000
+          },
+          "payment_date": {
+            "type": "date",
+            "example": "1945-08-17T00:00:00.000Z"
+          },
+          "updatedAt": {
+            "type": "date",
+            "example": "2022-10-17T14:04:48.389Z"
+          },
+          "createdAt": {
+            "type": "date",
+            "example": "2022-10-17T14:04:48.389Z"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerToken": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
